@@ -1,0 +1,103 @@
+import  { useEffect, useRef } from 'react';
+import './container.css';
+import ticketSvg from '../assets/subtract.svg';
+import ticzVector from '../assets/vector.svg';
+import bwipjs from 'bwip-js'; 
+import { Link } from 'react-router-dom';
+
+function TicketContainer(){
+  const canvasRef = useRef(null); // Create a reference to the canvas element
+  const randomCode = (length)=>{
+    const numChar = '0123456789';
+    let code = '';
+    for (let i = 0; i < length; i+=1) {
+      code += numChar.charAt(Math.floor(Math.random() * numChar.length));
+    }
+    return code;
+  };
+  useEffect(() => { // Use useEffect to run code after the component is mounted
+    const codeTxt = randomCode(9);
+    try { // Use Try catch Block
+
+      bwipjs.toCanvas(canvasRef.current, { // Access the canvas through the ref
+        bcid: 'code128',
+        text: codeTxt,
+        scale: 3,
+        height: 7,
+        width: 35,
+        textyoffset: 2,
+        includetext: true,
+        textxalign: 'center',
+      });
+    } catch (e) {
+      // Output the code to the console rather than displaying it on the page
+      console.log(e);
+    }
+  }, []); // The empty dependency array ensures this runs only once, after the initial render
+  return(
+    <>
+      <main className='container'>
+      <div className="details">
+          <div className="title">
+            <h2>Attendee Details</h2>
+            <p>Step 3/3</p>
+          </div>
+          <div className="progress-bar">
+            <div className="checkout-progress"></div>
+          </div>
+        </div>
+        <div className="message">
+          <h2>Your ticket is booked!</h2>
+          <p>You can download or check your email for a copy</p>
+        </div>
+        <div className="ticket">
+          <img src={ticketSvg} className='ticket-container' alt="" />
+          <div className="ticket-content">
+            <h3>Techember Fest  &quot;25</h3>
+            <p className='address-time'>
+              📍Ikoyi Lagos
+            </p>
+            <p className="address-time">
+              March 15,2025 | 7:00PM
+            </p>
+            <img src={ticzVector} className='user-img' alt="user-img" />
+            <div className="user-info">
+              <div className="name cell border-r border-b">
+                <label htmlFor="name">Enter your name</label>
+                <h3>John doe</h3>
+              </div>
+              <div className="email cell border-b">
+                <label htmlFor="email">Enter your email *</label>
+                <h3>John doe</h3>
+              </div>
+              <div className="ticket-type cell border-r border-b">
+                <label htmlFor="ticket-type">Ticket Type:</label>
+                <h3>VIP</h3>
+              </div>
+              <div className="ticket-for cell border-b">
+                <label htmlFor="ticket-for">Ticket for:</label>
+                <h3>1</h3>
+              </div>
+              <div className="request ">
+                <label htmlFor="request">Special request?</label>
+                <p>Hello world</p>
+              </div>
+            </div>
+            <div className="bar-code">
+            <canvas id="mycanvas" ref={canvasRef}></canvas> {/* Use the canvas ref */}
+            </div>
+          </div>
+        </div>
+        <div className="checkout-btn">
+          <Link className="next btn" >
+            Download Ticket
+          </Link>
+          <Link className="cancel btn" to='/'>
+          Book Another ticket
+          </Link>
+        </div>
+      </main>
+    </>
+  );
+}
+export default TicketContainer;
