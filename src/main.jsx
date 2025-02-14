@@ -5,7 +5,7 @@ import App from './App.jsx';
 import FormPage from './FormPage.jsx';
 import Checkout from './checkout.jsx';
 import AboutPage from './about.jsx';
-import {RouterProvider, createBrowserRouter , BrowserRouter} from "react-router-dom";
+import { createBrowserRouter ,RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
