@@ -5,7 +5,7 @@ import App from './App.jsx';
 import FormPage from './FormPage.jsx';
 import Checkout from './checkout.jsx';
 import AboutPage from './about.jsx';
-import {RouterProvider, createBrowserRouter} from "react-router-dom";
+import {RouterProvider, createBrowserRouter , BrowserRouter} from "react-router-dom";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -14,7 +14,9 @@ const router = createBrowserRouter([
   { path: "/about", element: <AboutPage /> },
 ]);
 createRoot(document.getElementById("root")).render(
+  <BrowserRouter basename='/HNG12-Stage2-confrence-ticket-generator'>
   <RouterProvider router={router} />,
+  </BrowserRouter>,
 );
 
 
