@@ -16,6 +16,7 @@ html{
 .header{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 325px;
   margin: 10px auto;
   background-color: #05252C;
@@ -167,10 +168,27 @@ hr{
 .cancel{
   border: 2px solid #24A0B5;
 }
+.about{
+  font-size: 2rem;
+}
+.lists ul >li{
+  list-style: none;
+}
 
 @media(min-width:700px){
   .header{
     width: 750px;
+  }
+  .nav-list{
+    display: flex;
+    align-items: center;
+  }
+  .nav-list a{
+    font-family: 'Roboto';
+    text-decoration: none;
+    margin-right: 15px;
+    color: #FFFFFF;
+    font-size: 1.8rem;
   }
   .heading{
     width: 100%;

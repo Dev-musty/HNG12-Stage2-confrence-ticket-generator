@@ -3,10 +3,12 @@ import './container.css';
 import tickectContainer from '../assets/Subtract.svg';
 import bwipjs from 'bwip-js'; 
 import { Link, useLocation } from 'react-router-dom';
+import html2canvas from 'html2canvas';
 function TicketContainer(){
   const location = useLocation();
   const { username, email, specialRequest, imgURL, quantity,  selectedPlan } = location.state || {};
   const canvasRef = useRef(null); 
+  const ticketRef = useRef(null);
   const randomCode = (length)=>{
     const numChar = '0123456789';
     let code = '';
@@ -33,6 +35,19 @@ function TicketContainer(){
       console.log(e);
     }
   }, []);
+  const downloadTicket = () => {
+    const ticketElement = ticketRef.current;
+    html2canvas(ticketElement, {
+      useCORS: true, 
+      allowTaint: false,
+      logging: true,
+    }).then((canvas) => {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'ticket.png';
+      link.click();
+    });
+  };
   return(
     <>
       <main className='container'>
@@ -49,7 +64,7 @@ function TicketContainer(){
           <h2>Your ticket is booked!</h2>
           <p>You can download or check your email for a copy</p>
         </div>
-        <div className="ticket">
+        <div className="ticket" ref={ticketRef}>
           <img src={tickectContainer} className='ticket-container' alt="" />
           <div className="ticket-content">
             <h3>Techember Fest  &quot;25</h3>
@@ -59,7 +74,7 @@ function TicketContainer(){
             <p className="address-time">
               March 15,2025 | 7:00PM
             </p>
-            <img src={imgURL} className='user-img' alt="user-img" />
+            <img src={imgURL} className='user-img' alt="user-img" crossOrigin="anonymous"/>
             <div className="user-info">
               <div className="name cell border-r border-b">
                 <label htmlFor="name">Enter your name</label>
@@ -88,9 +103,9 @@ function TicketContainer(){
           </div>
         </div>
         <div className="checkout-btn">
-          <Link className="next btn" >
+          <button className="next btn" onClick={downloadTicket}>
             Download Ticket
-          </Link>
+          </button>
           <Link className="cancel btn" to='/'>
           Book Another ticket
           </Link>

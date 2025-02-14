@@ -1,5 +1,6 @@
 import ticzVector from '../assets/vector.svg';
 import ticzLogo from '../assets/ticz.svg';
+import { Link } from 'react-router-dom';
 function NavBar(){
  return (
     <>
@@ -10,9 +11,9 @@ function NavBar(){
         </div>
         <nav>
           <ul className='nav-list'>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">My Ticket</a></li>
-            <li><a href="#">About Project</a></li>
+            <Link to= '/'>Event</Link>
+            <Link to= '/'>My Tickets</Link>
+            <Link to= '/about'>About Project</Link>
           </ul>
         </nav>
         <a href="#" className='link'>MY TICKETS <i className="fa-solid fa-arrow-right"></i></a>
