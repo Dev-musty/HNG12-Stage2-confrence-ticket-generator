@@ -14,9 +14,9 @@ const router = createBrowserRouter([
   { path: "/about", element: <AboutPage /> },
 ]);
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename='/HNG12-Stage2-confrence-ticket-generator'>
+  
   <RouterProvider router={router} />,
-  </BrowserRouter>,
+ 
 );
 
 
