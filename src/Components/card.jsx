@@ -25,8 +25,10 @@ const PricingSelector = ({ selectedPlan, setSelectedPlan }) => {
                 {plan.id === 'FREE' ? 'Free' : `$${plan.price}`}
               </span>
             </div>
-            <div className="plan-type">{plan.type}</div>
-            <div className="plan-period">{plan.period}</div>
+            <div>
+              <div className="plan-type">{plan.type}</div>
+              <div className="plan-period">{plan.period}</div>
+            </div>
           </div>
         </div>
       ))}

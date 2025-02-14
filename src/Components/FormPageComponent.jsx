@@ -67,7 +67,7 @@ function FormPageComponent() {
         </div>
         <div className="upload-container">
           <p>{loading ? 'uploading.....' :'Upload Profile Photo'}</p>
-          <form>
+          <form >
             <div id="drop-area">
               <input type="file" id="file-input" accept='image/png, image/jpeg, image/svg' onChange={handleImageChange} />
               {imagePreview ? <label htmlFor="file-input" className='img-container'>
@@ -92,7 +92,7 @@ function FormPageComponent() {
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
           
           <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input type="email" placeholder='&#xf0e0; helloworld@io' value={email} onChange={(e) => setEmail(e.target.value)} required />
           
           <label>Special Request:</label>
           <input type="text" className='text-area' placeholder='Textarea' value={specialRequest} onChange={(e) => setSpecialRequest(e.target.value)} />

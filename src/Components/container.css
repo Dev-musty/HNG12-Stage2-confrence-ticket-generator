@@ -9,4 +9,12 @@
     border: 1px solid #0E464F;
     gap: 12px;
     width: 325px;
+    max-width: 425px;
+}
+
+@media(min-width:700px){
+  .container{
+    max-width: 1024px;
+    width: 700px;
+  }
 }

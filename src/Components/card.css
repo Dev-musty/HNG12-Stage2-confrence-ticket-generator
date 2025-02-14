@@ -2,10 +2,11 @@ html{
   font-size: 62.5%;
 }
 .pricing-container {
+  font-family: 'Roboto';
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 400px;
+  width: 100%;
   padding: 16px;
   background: #052228;
   border: 1px solid #07373F;
@@ -21,7 +22,7 @@ html{
 }
 
 .pricing-card.selected {
-  background-color: #042f2e;
+  background-color: #197686;
   box-shadow: 0 0 10px rgba(13, 202, 240, 0.2);
 }
 .price {
@@ -39,4 +40,21 @@ html{
 .plan-period {
   font-size: 1.4rem;
   color: #9ca3af;
+}
+@media(min-width:700px){
+  .pricing-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
+  .pricing-content{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .price{
+    background-color:#07373F;
+    padding: 5px 5px 5px 30px;
+    border-radius: 10px;
+  }
 }

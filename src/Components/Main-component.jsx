@@ -24,11 +24,11 @@ function Main(){
         <div className="section-title">
           <h3>Techember Fest  &quot;25</h3>
           <p className="event">Join us for an unforgettable experience at Techember Fest! Secure your spot now.</p>
-          <p>📍Ikoyi Lagos <br /> March 15,2025 | 7:00PM</p>
+          <p>📍Ikoyi Lagos || March 15,2025 | 7:00PM</p>
         </div>
         <hr />
         <div className="ticket-type">
-          <p>Select ticket type</p>
+          <p>Select ticket type:</p>
           <PricingSelector selectedPlan={selectedPlan} setSelectedPlan={setSelectedPlan}/>
           
          
