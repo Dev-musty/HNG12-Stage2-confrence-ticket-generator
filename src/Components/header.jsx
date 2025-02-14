@@ -1,4 +1,4 @@
-import ticzVector from '../assets/vector.svg';
+import ticzVector from '../assets/logo.svg';
 import ticzLogo from '../assets/ticz.svg';
 import { Link } from 'react-router-dom';
 function NavBar(){
