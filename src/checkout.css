@@ -59,7 +59,8 @@ margin: 15px 0 ;
   opacity: 33%;
 }
 .user-info h3{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-wrap: break word;
 }
 .cell{
   display: flex;
@@ -73,6 +74,14 @@ margin: 15px 0 ;
 .border-b{
   border-bottom: 1px solid #12464E;
 }
+.email {
+  max-width: 90%; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  word-wrap: break-word;
+}
+
 .request{
   grid-column: span 2;
   width: 224px;

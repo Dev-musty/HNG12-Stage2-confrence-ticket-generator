@@ -1,12 +1,12 @@
 import  { useEffect, useRef } from 'react';
 import './container.css';
-import ticketSvg from '../assets/subtract.svg';
-import ticzVector from '../assets/vector.svg';
+import tickectContainer from '../assets/Subtract.svg';
 import bwipjs from 'bwip-js'; 
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
 function TicketContainer(){
-  const canvasRef = useRef(null); // Create a reference to the canvas element
+  const location = useLocation();
+  const { username, email, specialRequest, imgURL, quantity,  selectedPlan } = location.state || {};
+  const canvasRef = useRef(null); 
   const randomCode = (length)=>{
     const numChar = '0123456789';
     let code = '';
@@ -15,11 +15,11 @@ function TicketContainer(){
     }
     return code;
   };
-  useEffect(() => { // Use useEffect to run code after the component is mounted
+  useEffect(() => { 
     const codeTxt = randomCode(9);
-    try { // Use Try catch Block
+    try { 
 
-      bwipjs.toCanvas(canvasRef.current, { // Access the canvas through the ref
+      bwipjs.toCanvas(canvasRef.current, { 
         bcid: 'code128',
         text: codeTxt,
         scale: 3,
@@ -30,10 +30,9 @@ function TicketContainer(){
         textxalign: 'center',
       });
     } catch (e) {
-      // Output the code to the console rather than displaying it on the page
       console.log(e);
     }
-  }, []); // The empty dependency array ensures this runs only once, after the initial render
+  }, []);
   return(
     <>
       <main className='container'>
@@ -51,7 +50,7 @@ function TicketContainer(){
           <p>You can download or check your email for a copy</p>
         </div>
         <div className="ticket">
-          <img src={ticketSvg} className='ticket-container' alt="" />
+          <img src={tickectContainer} className='ticket-container' alt="" />
           <div className="ticket-content">
             <h3>Techember Fest  &quot;25</h3>
             <p className='address-time'>
@@ -60,31 +59,31 @@ function TicketContainer(){
             <p className="address-time">
               March 15,2025 | 7:00PM
             </p>
-            <img src={ticzVector} className='user-img' alt="user-img" />
+            <img src={imgURL} className='user-img' alt="user-img" />
             <div className="user-info">
               <div className="name cell border-r border-b">
                 <label htmlFor="name">Enter your name</label>
-                <h3>John doe</h3>
+                <h3>{username}</h3>
               </div>
               <div className="email cell border-b">
                 <label htmlFor="email">Enter your email *</label>
-                <h3>John doe</h3>
+                <h3>{email}</h3>
               </div>
               <div className="ticket-type cell border-r border-b">
                 <label htmlFor="ticket-type">Ticket Type:</label>
-                <h3>VIP</h3>
+                <h3>{ selectedPlan}</h3>
               </div>
               <div className="ticket-for cell border-b">
                 <label htmlFor="ticket-for">Ticket for:</label>
-                <h3>1</h3>
+                <h3>{quantity}</h3>
               </div>
               <div className="request ">
                 <label htmlFor="request">Special request?</label>
-                <p>Hello world</p>
+                <p>{specialRequest}</p>
               </div>
             </div>
             <div className="bar-code">
-            <canvas id="mycanvas" ref={canvasRef}></canvas> {/* Use the canvas ref */}
+            <canvas id="mycanvas" ref={canvasRef}></canvas> 
             </div>
           </div>
         </div>

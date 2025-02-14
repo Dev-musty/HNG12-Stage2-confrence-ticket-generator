@@ -115,6 +115,9 @@ hr{
   border: 1px solid #07373F;
   border-radius: 12px;
 }
+.num-ticket >select>option{
+  background-color: #07373F;
+}
 .checkout-btn{
   width: 100%;
   display: flex;

@@ -1,7 +1,16 @@
+import { useState } from 'react';
 import PricingSelector from './card.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './container.css';
 function Main(){
+  const [quantity, setQuatity] = useState('1');
+  const [selectedPlan, setSelectedPlan] = useState('free');
+  const navigate = useNavigate();
+  const handleNext = (e) => {
+    e.preventDefault();
+    
+    navigate('/form',{ state: {selectedPlan,quantity} });
+  };
   return(
     <>
       <main className="container">
@@ -20,14 +29,14 @@ function Main(){
         <hr />
         <div className="ticket-type">
           <p>Select ticket type</p>
-          <PricingSelector />
+          <PricingSelector selectedPlan={selectedPlan} setSelectedPlan={setSelectedPlan}/>
           
          
         </div>
 
         <div className="num-ticket">
           <label htmlFor="tickets">Number of tickets</label>
-          <select name="tickets" id="tickets">
+          <select name="tickets" id="tickets" value={quantity} onChange={(e) => setQuatity(e.target.value)} required >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -35,7 +44,7 @@ function Main(){
           </select>
         </div>
         <div className="checkout-btn">
-          <Link className="next btn" to='/form'>Next</Link>
+          <button className="next btn" onClick={handleNext}>Next</button>
           
           <Link className="cancel btn">Cancel</Link>
         </div>
